@@ -1,4 +1,8 @@
 # The Site Configuration
+# _config.yml
+assets:
+  self_host:
+    enabled: true
 
 # Import the theme
 theme: jekyll-theme-chirpy
