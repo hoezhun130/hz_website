@@ -38,7 +38,7 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Tan Hoe Zhun
+  name: H03ZHVN
   email: hoezhun@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
@@ -77,7 +77,7 @@ theme_mode: # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: https://media.licdn.com/dms/image/C4E03AQG8FSTAGo1JOw/profile-displayphoto-shrink_800_800/0/1632820766310?e=1710374400&v=beta&t=j5e-WSgIgMwq1DsV-ysC7aIHFLlksA-ovpFFqLmrFLA
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
