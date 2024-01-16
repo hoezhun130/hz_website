@@ -16,7 +16,7 @@ Flag format: SKR{flag}
 ## Provided Files
 - |-- **secret_recipe.zip**
 |   |-- Ingredients/
-|   |   |-- [Passwords](assets\secret_recipe\Ingredients\Passwords)
+|   |   |-- [Passwords]({{ site.baseurl }}assets\secret_recipe\Ingredients\Passwords)
 |   |   |-- Water
 |   |   |-- Salt
 |   |   |-- Pepper
