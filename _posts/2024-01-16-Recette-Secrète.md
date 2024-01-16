@@ -14,13 +14,13 @@ Flag format: SKR{flag}
 >What is Salt and Pepper in Password Hashing?
 
 ## Provided Files
-- |-- [**secret_recipe.zip**](/assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/secret_recipe.zip)
-|   |-- [Ingredients/](/assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/secret_recipe/Ingredients/)
-|   |   |-- [Beans](/assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/secret_recipe/Ingredients/Beans)
-|   |   |-- [Carrot](/assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/secret_recipe/Ingredients/Carrot)
-|   |   |-- [Passwords](/assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/secret_recipe/Ingredients/Passwords)
-|   |   |-- [Pepper](/assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/secret_recipe/Ingredients/Pepper)
-|   |   |-- [Salt](/assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/secret_recipe/Ingredients/Salt)
-|   |   |-- [Water](/assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/secret_recipe/Ingredients/Water)
-|   |-- [Product](/assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/secret_recipe/Product)
-|   |-- [recipe.png](/assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/secret_recipe/recipe.png)
+- |-- [**secret_recipe.zip**](/hz_website//assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/secret_recipe.zip)
+|   |-- [Ingredients/](/hz_website//assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/secret_recipe/Ingredients/)
+|   |   |-- [Beans](/hz_website//assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/secret_recipe/Ingredients/Beans)
+|   |   |-- [Carrot](/hz_website//assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/secret_recipe/Ingredients/Carrot)
+|   |   |-- [Passwords](/hz_website//assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/secret_recipe/Ingredients/Passwords)
+|   |   |-- [Pepper](/hz_website//assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/secret_recipe/Ingredients/Pepper)
+|   |   |-- [Salt](/hz_website//assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/secret_recipe/Ingredients/Salt)
+|   |   |-- [Water](/hz_website//assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/secret_recipe/Ingredients/Water)
+|   |-- [Product](/hz_website//assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/secret_recipe/Product)
+|   |-- [recipe.png](/hz_website//assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/secret_recipe/recipe.png)
