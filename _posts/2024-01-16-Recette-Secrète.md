@@ -45,10 +45,19 @@ As we know the flag had a starting point with `Beans` and concluded with `Pepper
 ![light mode only](/assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/kali_output3.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
 ![dark mode only](/assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/kali_output3.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
 
-a
+The `Product` file contains a random characters, which is a hash value. After observing the hash value in the `Product` file, I related it back to the hint provided in the challenge. This led me to research the concepts of `Salt` and `Pepper` in the context of password hashing.
 
 ![light mode only](/assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/Password_Hashing.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
 ![dark mode only](/assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/Password_Hashing.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+I learned that `Salt` is a random value that is added to the password before hashing, while `Pepper` is a secret value that is also added to the password before hashing but is not stored with the hashed password.
+
+After understanding the concept of Salt and Pepper in Password Hashing, I realize that the `Passwords` acts as a salt before hashing. Thus, our task is to determine the specific `Passwords` that, when added to the temporarily constructed flag and it matches the hash value found in the `Product` file after hashing. 
+
+<br><br>
+Below is the Python code that provides a solution to the challenge.
+
+
 
 ```python
 import hashlib
@@ -87,3 +96,11 @@ for password in passwords:
 else:
     print("Password not found in the provided list.")
 ```
+
+Upon executing the code, we found out that the `Passwords` is `passw0rd`
+
+![light mode only](/assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/Python.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/SKR_CTF/Cryptography/Recette_Secrète/Python.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+## Flag
+SKR{Brut3_Forc1nG_passw0rd_H4sH_W1tH_S4lt&P3pp3r}
