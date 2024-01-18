@@ -71,8 +71,7 @@ carrot = "_H4sH_W1tH_"
 product_hash = "0edcbe97ba900dda8bbafe2498d38d8b"
 
 # Read passwords from the file
-with open("passwords.txt", "r") as file:
-    # Assuming each line in the file is a password
+with open("Passwords", "r") as file:
     passwords = [line.strip() for line in file]
 
 # Hash function
