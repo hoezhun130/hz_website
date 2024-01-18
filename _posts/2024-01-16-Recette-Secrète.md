@@ -52,7 +52,7 @@ The `Product` file contains a random characters, which is a hash value. After ob
 
 I learned that `Salt` is a random value that is added to the password before hashing, while `Pepper` is a secret value that is also added to the password before hashing but is not stored with the hashed password.
 
-After understanding the concept of Salt and Pepper in Password Hashing, I realize that the `Passwords` acts as a salt before hashing. Thus, our task is to determine the specific `Passwords` that, when added to the temporarily constructed flag and it matches the hash value found in the `Product` file after hashing. 
+After understanding the concept of Salt and Pepper in Password Hashing, I realized that the `Passwords` acts as a salt before hashing. Thus, our task is to determine the specific `Passwords` that, when added to the temporarily constructed flag and it matches the hash value found in the `Product` file after hashing. 
 
 <br><br>
 Below is the Python code that provides a solution to the challenge.
