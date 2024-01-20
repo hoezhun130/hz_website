@@ -72,6 +72,7 @@ product_hash = "0edcbe97ba900dda8bbafe2498d38d8b"
 
 # Read passwords from the file
 with open("Passwords", "r") as file:
+    #Reading password line by line
     passwords = [line.strip() for line in file]
 
 # Hash function
