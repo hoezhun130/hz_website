@@ -8,6 +8,7 @@ order: 4
 
 | Year | Event Name       | Role / Outcome |
 |:----:|:----------------:|:--------------:|
+| 2024 | [MapnaCTF 2024](https://mapnactf.com/)     |    18th Place    |
 | 2023 | [STANDCON 2023](https://ctf.standcon.n0h4ts.com/)     |    47th Place    |
 | 2023 | [Wargames.MY 2023 CTF](https://wargames.my/2023/#wgmy)     |    Participant     |
 | 2023 | [ASEAN Battle of Hacker (ABOH) 2023](https://new.apu.edu.my/asean-battle-of-hackers-aboh-2023-triumphs-transformations-and-cybersecurity-champions#:~:text=The%20ASEAN%20Battle%20of%20Hackers,innovative%20approach%20and%20international%20flair.)    |       66th Place       |
