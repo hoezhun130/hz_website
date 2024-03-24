@@ -5,9 +5,11 @@
 
 - type: github
   icon: "fab fa-github"
+  url:  'https://github.com/hoezhun130' 
 
 - type: twitter
   icon: "fa-brands fa-x-twitter"
+  url:  'https://twitter.com/H03_ZHVN'   
 
 - type: email
   icon: "fas fa-envelope"
