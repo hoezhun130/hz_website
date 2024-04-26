@@ -17,4 +17,3 @@ tags: "DiceCTF Web"
 
 ## Flag
 >dice{pr0_duck_gam3r_AAEJCQEBCQgCAQkHAwEJBgQBCQUFAQkEBgEJAwcBCQIIAQkB}
-{: .prompt-tip }
