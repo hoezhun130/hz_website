@@ -3,6 +3,7 @@ layout: "post"
 title: "dicedicegoose"
 categories: [DiceCTF, Web]
 tags: "DiceCTF Web"
+image: /assets/CTF/DiceCTF/diceCTF.png
 ---
 
 ## Challenge Overview

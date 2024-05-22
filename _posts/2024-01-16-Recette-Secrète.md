@@ -3,6 +3,7 @@ layout: "post"
 title: "Recette Secrète"
 categories: [SKR_CTF, Cryptography]
 tags: "Cryptography Salt Pepper"
+image: /assets/CTF/SKR_CTF/SKRCTF.png
 ---
 
 ## Challenge Overview

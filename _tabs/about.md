@@ -4,7 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-<h4>Activities/Achievements</h4>
+<!-- <h4>Activities/Achievements</h4>
 
 | Year | Event Name       | Role / Outcome |
 |:----:|:----------------:|:--------------:|
@@ -17,3 +17,7 @@ order: 4
 | 2023 | [WorldSkills Malaysia University Challenge (WSMUC) 2023](https://www.unikl.edu.my/medalsatwsmuc2023/) |     11th Place      |
 | 2023 | [Cydes 2023](https://cydes.my/events)       |  9th Place     |
 
+-->
+
+<h4>Whoami</h4>
+Hello! I'm an Information Security student at TARUMT. My journey into the world of CTFs began in 2023. I've had the chance to play with some amazing teams like A1ph4_Sh4rk!, Roti Canai, and M53. I wouldn't be where I am today without my awesome seniors. They kick-started my CTF journey and have always been there to provide training and guidance. Their support means the world to me, and I’m incredibly grateful for everything they’ve done.
