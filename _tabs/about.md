@@ -16,6 +16,19 @@ Information Security student at TARUMT. My journey into the world of CTFs began 
 
 ## Memory Dump
 
+<h3>CSLU IIUM 2024</h3>
+
+![light mode only](/assets/dmp/cslu_iium_group.jpg){: .light .w-75 .shadow .rounded-10 margin-right: 10px;" w='1212' h='668' }
+![dark mode only](/assets/dmp/cslu_iium_group.jpg){: .dark .w-75 .shadow .rounded-10 margin-right: 10px;" w='1212' h='668' }
+
+![light mode only](/assets/dmp/cslu_iium_group2.jpg){: .light .w-75 .shadow .rounded-10 margin-right: 10px;" w='1212' h='668' }
+![dark mode only](/assets/dmp/cslu_iium_group2.jpg){: .dark .w-75 .shadow .rounded-10 margin-right: 10px;" w='1212' h='668' }
+
+<h3>CSLU UM 2024</h3>
+
+![light mode only](/assets/dmp/cslu_um_group.jpg){: .light .w-75 .shadow .rounded-10 margin-right: 10px;" w='1212' h='668' }
+![dark mode only](/assets/dmp/cslu_um_group.jpg){: .dark .w-75 .shadow .rounded-10 margin-right: 10px;" w='1212' h='668' }
+
 <h3>Black Hat Asia 2024</h3>
 
 ![light mode only](/assets/dmp/blackhat2023_home.jpg){: .light .w-75 .shadow .rounded-10 margin-right: 10px;" w='1212' h='668' }
