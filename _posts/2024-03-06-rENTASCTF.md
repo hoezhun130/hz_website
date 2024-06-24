@@ -306,4 +306,4 @@ To inspect the metadata, we viewed the source code of the Instagram post and sea
 
 `RWSC{Bl4cky_S1c4r1o}`
 
-
+## Steganography/Zombeify
