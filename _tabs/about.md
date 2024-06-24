@@ -12,7 +12,7 @@ order: 4
 </style>
 
 ## whoami
-Information Security student at TARUMT. My journey into the world of CTFs began in 2023. I've had the chance to play with some amazing teams like [A1ph4_Sh4rk!](https://ctftime.org/team/167261), [M53](https://ctftime.org/team/211971) and [RE:UN10N](https://ctftime.org/team/307413/). I wouldn't be where I am today without my awesome seniors. They kick-started my CTF journey and have always been there to provide training and guidance. Their support means the world to me, and I’m incredibly grateful for everything they’ve done.
+Information Security student at TARUMT. My journey into the world of CTFs began in 2023. I've had the chance to play with some amazing teams like [A1ph4_Sh4rk!](https://ctftime.org/team/167261), [M53](https://ctftime.org/team/211971) and [RE:UN10N](https://ctftime.org/team/307413/). I wouldn't be where I am today without my seniors. They kick-started my CTF journey and have always been there to provide training and guidance. Their support means the world to me, and I’m incredibly grateful for everything they’ve done.
 
 ## Memory Dump
 
