@@ -307,3 +307,90 @@ To inspect the metadata, we viewed the source code of the Instagram post and sea
 `RWSC{Bl4cky_S1c4r1o}`
 
 ## Steganography/Zombeify
+
+**Solution:**
+
+![light mode only](/assets/CTF/rENTAS_CTF/Steganography/chal.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Steganography/chal.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+The initial step was to determine the content of the provided file. After several attempts, we used `Base32` and `Render Image`to reveal an image.
+
+![light mode only](/assets/CTF/rENTAS_CTF/Steganography/pic.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Steganography/pic.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+After saving the image, we conducted online searches related to `Zombieland Saga`, but these searches did not found any useful results. However, the we are provided with additional hints.
+- Mp3 got hex
+- Hex ascii
+- https://github.com/CleasbyCode/jdvrif
+- https://github.com/danielcardeenas/AudioStego
+
+We open the first GitHub repository (jdvrif)  and found that it provide [online tool](https://cleasbycode.co.uk/jdvrif/index/) to convert the image into an MP3 file
+
+![light mode only](/assets/CTF/rENTAS_CTF/Steganography/jdvrif.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Steganography/jdvrif.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+Next, we used the second GitHub repository (AudioStego) to extract hexadecimal ASCII data from the MP3 file
+
+![light mode only](/assets/CTF/rENTAS_CTF/Steganography/audiostego.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Steganography/audiostego.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+With the extracted hexadecimal ASCII data, we proceeded to decode it into readable text.
+
+![light mode only](/assets/CTF/rENTAS_CTF/Steganography/flag.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Steganography/flag.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+**Flag:**
+
+`RWSC{kur0n3kO}`
+
+## Networking/Last Hope
+
+**Challenge Dsescription:**
+
+In this challenge, we are given a network traffic capture file, asking us to find the Wi-Fi password.
+
+**Solution:**
+
+Given the nature of the challenge, our first instinct was to use aircrack-ng, a popular tool for cracking Wi-Fi passwords. We decided to use the rockyou.txt wordlist as our dictionary for the brute-force attack.
+
+![light mode only](/assets/CTF/rENTAS_CTF/Network/aircrack.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Network/aircrack.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+It only took a few seconds for aircrack-ng to process the capture file and find the password. The tool displayed the password “anonymous” as the result.
+
+![light mode only](/assets/CTF/rENTAS_CTF/Network/flag.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Network/flag.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+**Flag:**
+
+`RWSC{anonymous}`
+
+## DFIR/Mobile
+
+**Solution:**
+
+For this challenge it took some time reading the report, with different mistakes made. At first the images with keypads was the primary suspect but then we saw it was going in order, so it was quickly ruled out. Next was some carved audio artifacts since the hint that provided the [youtube video](https://youtu.be/icBD5PiyoyI?si=lmcp2Jh-3WTzE-pk) that was using a hash to compare with a list to get the password. It was a bit too far, so a little googling for gesture.key’s location shows this:
+
+![light mode only](/assets/CTF/rENTAS_CTF/Mobile/key.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Mobile/key.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+So we had to look for /data/system folder in the pdf, and searching the string /data/system gave us this:
+
+![light mode only](/assets/CTF/rENTAS_CTF/Mobile/raw.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Mobile/raw.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+Voilà! From here there were no hashes given but a _rawData was provided in BOLD too, so to find ways to decrypt raw data
+
+![light mode only](/assets/CTF/rENTAS_CTF/Mobile/decode.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Mobile/decode.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+Running it on kali we get this:
+
+![light mode only](/assets/CTF/rENTAS_CTF/Mobile/flag.png){: .light .w-75 .shadow .rounded-10 w='1212' h='668' }
+![dark mode only](/assets/CTF/rENTAS_CTF/Mobile/flag.png){: .dark .w-75 .shadow .rounded-10 w='1212' h='668' }
+
+The Pattern is the flag
+
+**Flag:**
+
+`RWSC{875463120}`
