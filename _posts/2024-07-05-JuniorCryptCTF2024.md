@@ -6,7 +6,7 @@ tags: ""
 image: /assets/CTF/JuniorCryptCTF/logo.png
 ---
 
-## Cryto/JuniorCryptCTF
+## Cryto/Unrevealed secret
 
 **Challenge Description:**
 
