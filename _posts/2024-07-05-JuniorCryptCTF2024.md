@@ -2,7 +2,7 @@
 layout: "post"
 title: "JuniorCrypt CTF"
 categories: [JuniorCrypt_CTF]
-tags: ""
+tags: "One-timePadCipher"
 image: /assets/CTF/JuniorCryptCTF/logo.png
 ---
 
