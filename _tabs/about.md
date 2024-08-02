@@ -18,6 +18,14 @@ Information Security student at TARUMT. My journey into the world of CTFs began 
 
 ## Memory Dump
 
+<h3>UTAR CTF 2024</h3>
+
+![light mode only](/assets/dmp/UtarCTF2024.jpg){: .light .w-75 .shadow .rounded-10 margin-right: 10px;" w='1212' h='668' }
+![dark mode only](/assets/dmp/UtarCTF2024.jpg){: .dark .w-75 .shadow .rounded-10 margin-right: 10px;" w='1212' h='668' }
+
+![light mode only](/assets/dmp/UtarCTF2024_group.jpg){: .light .w-75 .shadow .rounded-10 margin-right: 10px;" w='1212' h='668' }
+![dark mode only](/assets/dmp/UtarCTF2024_group.jpg){: .dark .w-75 .shadow .rounded-10 margin-right: 10px;" w='1212' h='668' }
+
 <h3>CSLU IIUM 2024</h3>
 
 ![light mode only](/assets/dmp/cslu_iium_group.jpg){: .light .w-75 .shadow .rounded-10 margin-right: 10px;" w='1212' h='668' }
